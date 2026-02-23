@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="dashboard-container fade-in">
+
+    <div class="dashboard-header">
+        <h1 id="welcomeTitle"></h1>
+        <button id="logoutBtn" class="secondary-btn">Logout</button>
+    </div>
+
+    <div class="dashboard-hero">
+        <h2>Your Next <span class="accent">Adventure</span> Awaits ✈️</h2>
+        <p>Start building your personalized <span class="accent">travel</span> itinerary today.</p>
+
+        <div class="button-group">
+            <button class="primary-btn">Create New Trip</button>
+            <button class="secondary-btn">View My Trips</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+if (!user) {
+    window.location.href = "index.html";
+} else {
+    document.getElementById("welcomeTitle").textContent =
+        `Welcome back, ${user.name}`;
+}
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "index.html";
+});
+</script>
+
+</body>
+</html>
